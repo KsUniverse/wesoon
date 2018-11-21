@@ -12,7 +12,7 @@ import java.lang.annotation.*;
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Import({InitializationConfig.class, RestReturnValueHandler.class, GlobalExceptionHandler.class})
+@Import({InitializationConfig.class, RestReturnValueHandler.class})
 @Documented
 public @interface EnableRESTful {
 }

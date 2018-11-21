@@ -1,6 +1,7 @@
 package com.wxy;
 
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,13 +14,14 @@ import javax.servlet.http.HttpServletRequest;
  * @Data 2018/11/14
  * @Version 1.0
  */
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public String globalExceptionHandler(HttpServletRequest request, Exception e) {
-        e.printStackTrace();
+        log.error(e.getMessage(),e);
         RestResult restResult = new RestResult();
         restResult.setCode(MvcContans.STATUS_CODE_INTERNAL_ERROR);
         restResult.setIsSuccess(false);

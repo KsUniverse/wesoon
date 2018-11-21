@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Import({ErrorMessage.class})
+@Import({ErrorMessage.class, GlobalExceptionHandler.class})
 @Documented
-public @interface EnableGolbalError {
+public @interface EnableGlobalError {
 }
