@@ -9,5 +9,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Import({ErrorMessage.class})
 @Documented
-public @interface EnableError {
+public @interface EnableGolbalError {
 }
