@@ -1,4 +1,4 @@
-package com.wxy;
+package com.wesoon.exception;
 
 /**
  * @Description

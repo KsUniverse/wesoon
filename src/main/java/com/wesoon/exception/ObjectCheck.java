@@ -1,4 +1,4 @@
-package com.wxy;
+package com.wesoon.exception;
 
 import java.util.Iterator;
 
@@ -10,16 +10,16 @@ public class ObjectCheck {
     }
     public void isNotNull(String code) {
         if(o == null)
-            throw BusinessExceptionFactory.build(code);
+            throw BusinessExceptionBuilder.build(code);
     }
     public void isNotEmpty(String code) {
         isNotNull(code);
         if(o instanceof String) {
             if(((String) o).trim().length() == 0)
-                throw BusinessExceptionFactory.build(code);
+                throw BusinessExceptionBuilder.build(code);
         } else if(o instanceof Iterator) {
             if(!((Iterator) o).hasNext())
-                throw BusinessExceptionFactory.build(code);
+                throw BusinessExceptionBuilder.build(code);
         }
     }
 }

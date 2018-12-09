@@ -1,4 +1,4 @@
-package com.wxy;
+package com.wesoon.web.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -26,6 +26,8 @@ public class ErrorMessage implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        if(errorPath == null)
+            throw new RuntimeException("配置文件中 缺少errorPath参数");
         InputStream in = ErrorMessage.class.getResourceAsStream(errorPath);
         properties = new Properties();
         properties.load(in);

@@ -1,4 +1,6 @@
-package com.wxy;
+package com.wesoon.exception;
+
+import com.wesoon.web.config.ErrorMessage;
 
 /**
  * @Description
@@ -7,8 +9,8 @@ package com.wxy;
  * @Version 1.0
  */
 
-public final class BusinessExceptionFactory {
-    private BusinessExceptionFactory(){}
+public final class BusinessExceptionBuilder {
+    private BusinessExceptionBuilder(){}
     public static BusinessException build(String code) {
         return new BusinessException(ErrorMessage.getErrorMessage(code));
     }

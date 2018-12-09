@@ -1,5 +1,6 @@
-package com.wxy;
+package com.wesoon.web.config;
 
+import com.wesoon.web.handler.RestReturnValueHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
