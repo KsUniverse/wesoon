@@ -27,7 +27,7 @@ public class GlobalExceptionHandler {
         log.error(e.getMessage(),e);
         RestResult restResult = new RestResult();
         restResult.setCode(MvcContans.STATUS_CODE_INTERNAL_ERROR);
-        restResult.setIsSuccess(false);
+        restResult.setSuccess(false);
         restResult.setData(null);
         if(e instanceof BusinessException)
             restResult.setDesc(e.getMessage());

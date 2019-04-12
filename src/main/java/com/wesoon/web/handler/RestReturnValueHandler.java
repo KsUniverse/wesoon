@@ -44,7 +44,7 @@ public class RestReturnValueHandler implements HandlerMethodReturnValueHandler {
         response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
         RestResult restResult = new RestResult();
         restResult.setCode(MvcContans.STATUS_CODE_SUCCEEDED);
-        restResult.setIsSuccess(true);
+        restResult.setSuccess(true);
         restResult.setData(JSONObject.toJSONString(returnValue));
         restResult.setDesc(MvcContans.DESC_SUCCESS);
         response.getWriter().write(JSONObject.toJSONString(restResult));
