@@ -29,10 +29,11 @@ public class GlobalExceptionHandler {
         restResult.setCode(MvcContans.STATUS_CODE_INTERNAL_ERROR);
         restResult.setSuccess(false);
         restResult.setData(null);
-        if(e instanceof BusinessException)
+        if(e instanceof BusinessException) {
             restResult.setDesc(e.getMessage());
-        else
+        } else {
             restResult.setDesc(MvcContans.DESC_ERROR);
+        }
         return JSONObject.toJSONString(restResult);
     }
 }
