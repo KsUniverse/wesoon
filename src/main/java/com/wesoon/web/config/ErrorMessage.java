@@ -19,6 +19,7 @@ import java.util.Properties;
 @Component
 @Order(0)
 public class ErrorMessage implements ApplicationRunner {
+
     @Value("${errorPath}")
     private String errorPath;
 
@@ -26,16 +27,18 @@ public class ErrorMessage implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        if(errorPath == null)
+        if (errorPath == null) {
             throw new RuntimeException("配置文件中 缺少errorPath参数");
+        }
         InputStream in = ErrorMessage.class.getResourceAsStream(errorPath);
         properties = new Properties();
         properties.load(in);
     }
 
     public static String getErrorMessage(String code) {
-        if(properties == null)
+        if (properties == null) {
             throw new RuntimeException("error message is not initialized, please not use this on start up");
+        }
         return properties.getProperty(code);
     }
 }

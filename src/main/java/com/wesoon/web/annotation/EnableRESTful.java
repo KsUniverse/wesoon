@@ -17,4 +17,5 @@ import java.lang.annotation.*;
 @Import({InitializationConfig.class, RestReturnValueHandler.class})
 @Documented
 public @interface EnableRESTful {
+
 }

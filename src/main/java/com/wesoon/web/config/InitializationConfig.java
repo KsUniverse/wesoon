@@ -18,6 +18,7 @@ import java.util.List;
  */
 @Configuration
 public class InitializationConfig {
+
     @Autowired
     private RequestMappingHandlerAdapter adapter;
     @Autowired

@@ -37,7 +37,7 @@ public class RestReturnValueHandler implements HandlerMethodReturnValueHandler {
 
     @Override
     public void handleReturnValue(Object returnValue, MethodParameter returnType, ModelAndViewContainer mavContainer,
-                                  NativeWebRequest webRequest) throws Exception {
+            NativeWebRequest webRequest) throws Exception {
         mavContainer.setRequestHandled(true);
 
         HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);

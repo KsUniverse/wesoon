@@ -10,7 +10,10 @@ import com.wesoon.web.config.ErrorMessage;
  */
 
 public final class BusinessExceptionBuilder {
-    private BusinessExceptionBuilder(){}
+
+    private BusinessExceptionBuilder() {
+    }
+
     public static BusinessException build(String code) {
         return new BusinessException(ErrorMessage.getErrorMessage(code));
     }

@@ -24,12 +24,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public String globalExceptionHandler(HttpServletRequest request, Exception e) {
-        log.error(e.getMessage(),e);
+        log.error(e.getMessage(), e);
         RestResult restResult = new RestResult();
         restResult.setCode(MvcContans.STATUS_CODE_INTERNAL_ERROR);
         restResult.setSuccess(false);
         restResult.setData(null);
-        if(e instanceof BusinessException) {
+        if (e instanceof BusinessException) {
             restResult.setDesc(e.getMessage());
         } else {
             restResult.setDesc(MvcContans.DESC_ERROR);

@@ -8,6 +8,7 @@ package com.wesoon.web;
  */
 
 public class MvcContans {
+
     public static final int STATUS_CODE_SUCCEEDED = 200;
     public static final int STATUS_CODE_INTERNAL_ERROR = 500;
     public static final String DESC_SUCCESS = "请求成功.";

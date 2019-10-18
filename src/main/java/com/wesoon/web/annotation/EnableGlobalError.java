@@ -12,4 +12,5 @@ import java.lang.annotation.*;
 @Import({ErrorMessage.class, GlobalExceptionHandler.class})
 @Documented
 public @interface EnableGlobalError {
+
 }

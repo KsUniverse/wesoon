@@ -8,7 +8,10 @@ package com.wesoon.exception;
  */
 
 public final class Check {
-    private Check() {}
+
+    private Check() {
+    }
+
     public static ObjectCheck that(Object o) {
         return new ObjectCheck(o);
     }
