@@ -1,4 +1,4 @@
-package com.wesoon.web;
+package com.wesoon.mvc;
 
 import lombok.Data;
 

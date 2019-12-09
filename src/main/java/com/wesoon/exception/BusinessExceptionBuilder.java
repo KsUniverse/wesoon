@@ -1,6 +1,6 @@
 package com.wesoon.exception;
 
-import com.wesoon.web.config.ErrorMessage;
+import com.wesoon.mvc.config.ErrorMessage;
 
 /**
  * @Description

@@ -1,4 +1,4 @@
-package com.wesoon.web.config;
+package com.wesoon.mvc.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -20,7 +20,7 @@ import java.util.Properties;
 @Order(0)
 public class ErrorMessage implements ApplicationRunner {
 
-    @Value("${errorPath}")
+    @Value("${errorPath:/error.properties}")
     private String errorPath;
 
     private static Properties properties;

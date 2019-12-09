@@ -1,9 +1,8 @@
-package com.wesoon.web.handler;
+package com.wesoon.mvc.handler;
 
-import com.alibaba.fastjson.JSONObject;
 import com.wesoon.exception.BusinessException;
-import com.wesoon.web.MvcContans;
-import com.wesoon.web.RestResult;
+import com.wesoon.mvc.MvcHttpConstant;
+import com.wesoon.mvc.RestResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,17 +22,17 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public String globalExceptionHandler(HttpServletRequest request, Exception e) {
+    public RestResult globalExceptionHandler(HttpServletRequest request, Exception e) {
         log.error(e.getMessage(), e);
         RestResult restResult = new RestResult();
-        restResult.setCode(MvcContans.STATUS_CODE_INTERNAL_ERROR);
+        restResult.setCode(MvcHttpConstant.STATUS_CODE_INTERNAL_ERROR);
         restResult.setSuccess(false);
         restResult.setData(null);
         if (e instanceof BusinessException) {
             restResult.setDesc(e.getMessage());
         } else {
-            restResult.setDesc(MvcContans.DESC_ERROR);
+            restResult.setDesc(MvcHttpConstant.DESC_ERROR);
         }
-        return JSONObject.toJSONString(restResult);
+        return restResult;
     }
 }

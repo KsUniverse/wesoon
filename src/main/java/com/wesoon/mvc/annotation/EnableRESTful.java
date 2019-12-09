@@ -1,7 +1,7 @@
-package com.wesoon.web.annotation;
+package com.wesoon.mvc.annotation;
 
-import com.wesoon.web.config.InitializationConfig;
-import com.wesoon.web.handler.RestReturnValueHandler;
+import com.wesoon.mvc.config.InitializationConfig;
+import com.wesoon.mvc.handler.RestReturnValueHandler;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

@@ -1,6 +1,6 @@
-package com.wesoon.web.config;
+package com.wesoon.mvc.config;
 
-import com.wesoon.web.handler.RestReturnValueHandler;
+import com.wesoon.mvc.handler.RestReturnValueHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;

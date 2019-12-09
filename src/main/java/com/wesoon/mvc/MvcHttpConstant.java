@@ -1,4 +1,4 @@
-package com.wesoon.web;
+package com.wesoon.mvc;
 
 /**
  * @Description
@@ -7,7 +7,7 @@ package com.wesoon.web;
  * @Version 1.0
  */
 
-public class MvcContans {
+public class MvcHttpConstant {
 
     public static final int STATUS_CODE_SUCCEEDED = 200;
     public static final int STATUS_CODE_INTERNAL_ERROR = 500;

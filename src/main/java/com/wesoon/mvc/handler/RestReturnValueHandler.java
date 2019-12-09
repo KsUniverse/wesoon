@@ -1,8 +1,8 @@
-package com.wesoon.web.handler;
+package com.wesoon.mvc.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wesoon.web.MvcContans;
-import com.wesoon.web.RestResult;
+import com.wesoon.mvc.MvcHttpConstant;
+import com.wesoon.mvc.RestResult;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -28,8 +28,8 @@ public class RestReturnValueHandler implements HandlerMethodReturnValueHandler {
     @Override
     public boolean supportsReturnType(MethodParameter returnType) {
         if (returnType.hasMethodAnnotation(ResponseBody.class)
-                || (!returnType.getDeclaringClass().equals(ModelAndView.class))
-                && returnType.getMethod().getDeclaringClass().isAnnotationPresent(RestController.class)) {
+                || !returnType.getDeclaringClass().equals(ModelAndView.class)
+                || returnType.getMethod().getDeclaringClass().isAnnotationPresent(RestController.class)) {
             return true;
         }
         return false;
@@ -43,10 +43,10 @@ public class RestReturnValueHandler implements HandlerMethodReturnValueHandler {
         HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);
         response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
         RestResult restResult = new RestResult();
-        restResult.setCode(MvcContans.STATUS_CODE_SUCCEEDED);
+        restResult.setCode(MvcHttpConstant.STATUS_CODE_SUCCEEDED);
         restResult.setSuccess(true);
         restResult.setData(JSONObject.toJSONString(returnValue));
-        restResult.setDesc(MvcContans.DESC_SUCCESS);
+        restResult.setDesc(MvcHttpConstant.DESC_SUCCESS);
         response.getWriter().write(JSONObject.toJSONString(restResult));
     }
 
