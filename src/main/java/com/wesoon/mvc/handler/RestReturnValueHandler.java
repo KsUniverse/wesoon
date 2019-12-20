@@ -28,7 +28,6 @@ public class RestReturnValueHandler implements HandlerMethodReturnValueHandler {
     @Override
     public boolean supportsReturnType(MethodParameter returnType) {
         if (returnType.hasMethodAnnotation(ResponseBody.class)
-                || !returnType.getDeclaringClass().equals(ModelAndView.class)
                 || returnType.getMethod().getDeclaringClass().isAnnotationPresent(RestController.class)) {
             return true;
         }
