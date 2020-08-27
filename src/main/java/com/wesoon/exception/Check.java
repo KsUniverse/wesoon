@@ -1,5 +1,7 @@
 package com.wesoon.exception;
 
+import java.util.Collection;
+
 /**
  * @Description
  * @Author WangXingYu
@@ -15,5 +17,7 @@ public final class Check {
     public static ObjectCheck that(Object o) {
         return new ObjectCheck(o);
     }
+
+    public static CollectionCheck that(Collection o) {return new CollectionCheck(o); }
 }
 
