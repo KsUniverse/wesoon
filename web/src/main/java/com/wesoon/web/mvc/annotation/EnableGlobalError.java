@@ -1,8 +1,7 @@
-package com.wesoon.mvc.annotation;
+package com.wesoon.web.mvc.annotation;
 
 
-import com.wesoon.mvc.config.ErrorMessage;
-import com.wesoon.mvc.handler.GlobalExceptionHandler;
+import com.wesoon.web.mvc.handler.GlobalExceptionHandler;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

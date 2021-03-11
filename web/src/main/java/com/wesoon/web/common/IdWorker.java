@@ -1,4 +1,4 @@
-package com.wesoon.common;
+package com.wesoon.web.common;
 
 import java.util.UUID;
 

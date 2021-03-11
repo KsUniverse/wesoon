@@ -1,8 +1,8 @@
-package com.wesoon.mvc.handler;
+package com.wesoon.web.mvc.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wesoon.mvc.MvcHttpConstant;
-import com.wesoon.mvc.RestResult;
+import com.wesoon.web.mvc.MvcHttpConstant;
+import com.wesoon.web.mvc.RestResult;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,11 +26,8 @@ public class RestReturnValueHandler implements HandlerMethodReturnValueHandler {
 
     @Override
     public boolean supportsReturnType(MethodParameter returnType) {
-        if (returnType.hasMethodAnnotation(ResponseBody.class)
-                || returnType.getMethod().getDeclaringClass().isAnnotationPresent(RestController.class)) {
-            return true;
-        }
-        return false;
+        return returnType.hasMethodAnnotation(ResponseBody.class)
+                || returnType.getMethod().getDeclaringClass().isAnnotationPresent(RestController.class);
     }
 
     @Override

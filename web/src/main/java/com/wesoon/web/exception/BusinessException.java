@@ -1,4 +1,4 @@
-package com.wesoon.exception;
+package com.wesoon.web.exception;
 
 /**
  * @Description

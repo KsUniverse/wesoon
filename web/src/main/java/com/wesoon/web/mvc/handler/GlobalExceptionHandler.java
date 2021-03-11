@@ -1,8 +1,8 @@
-package com.wesoon.mvc.handler;
+package com.wesoon.web.mvc.handler;
 
-import com.wesoon.exception.BusinessException;
-import com.wesoon.mvc.MvcHttpConstant;
-import com.wesoon.mvc.RestResult;
+import com.wesoon.web.exception.BusinessException;
+import com.wesoon.web.mvc.MvcHttpConstant;
+import com.wesoon.web.mvc.RestResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,8 +20,25 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
+
     @ResponseBody
+    @ExceptionHandler(BusinessException.class)
+    public RestResult BusinessExceptionHandler(HttpServletRequest request, BusinessException e) {
+        log.error(e.getMessage(), e);
+        RestResult restResult = new RestResult();
+        restResult.setCode(MvcHttpConstant.STATUS_CODE_BUSINESS_ERROR);
+        restResult.setSuccess(false);
+        restResult.setData(null);
+        if (e instanceof BusinessException) {
+            restResult.setDesc(e.getMessage());
+        } else {
+            restResult.setDesc(MvcHttpConstant.BUSINESS_DESC_ERROR);
+        }
+        return restResult;
+    }
+
+    @ResponseBody
+    @ExceptionHandler(Exception.class)
     public RestResult globalExceptionHandler(HttpServletRequest request, Exception e) {
         log.error(e.getMessage(), e);
         RestResult restResult = new RestResult();
@@ -31,7 +48,7 @@ public class GlobalExceptionHandler {
         if (e instanceof BusinessException) {
             restResult.setDesc(e.getMessage());
         } else {
-            restResult.setDesc(MvcHttpConstant.DESC_ERROR);
+            restResult.setDesc(MvcHttpConstant.INTERNAL_DESC_ERROR);
         }
         return restResult;
     }

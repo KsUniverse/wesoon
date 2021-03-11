@@ -1,7 +1,6 @@
-package com.wesoon.mvc.config;
+package com.wesoon.web.mvc.config;
 
-import com.wesoon.mvc.handler.RestReturnValueHandler;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.wesoon.web.mvc.handler.RestReturnValueHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
@@ -19,11 +18,13 @@ import java.util.List;
 @Configuration
 public class InitializationConfig {
 
-    @Autowired
     private RequestMappingHandlerAdapter adapter;
-    @Autowired
     private RestReturnValueHandler restReturnValueHandler;
 
+    public InitializationConfig(RequestMappingHandlerAdapter adapter, RestReturnValueHandler restReturnValueHandler) {
+        this.adapter = adapter;
+        this.restReturnValueHandler = restReturnValueHandler;
+    }
 
     @PostConstruct
     public void initTokenModelAttributeMethodProcessor() {

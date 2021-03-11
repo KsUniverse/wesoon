@@ -1,4 +1,4 @@
-package com.wesoon.common;
+package com.wesoon.web.common;
 
 /**
  * Copyright (c) 2011-2020, hubin (jobob@qq.com).
