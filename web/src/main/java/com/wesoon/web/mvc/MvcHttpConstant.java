@@ -16,5 +16,4 @@ public class MvcHttpConstant {
     public static final String INTERNAL_DESC_ERROR = "请求服务器内部错误.";
 
     public static final int STATUS_CODE_BUSINESS_ERROR = 50000;
-    public static final String BUSINESS_DESC_ERROR = "请求服务器业务错误.";
 }

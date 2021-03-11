@@ -29,11 +29,7 @@ public class GlobalExceptionHandler {
         restResult.setCode(MvcHttpConstant.STATUS_CODE_BUSINESS_ERROR);
         restResult.setSuccess(false);
         restResult.setData(null);
-        if (e instanceof BusinessException) {
-            restResult.setDesc(e.getMessage());
-        } else {
-            restResult.setDesc(MvcHttpConstant.BUSINESS_DESC_ERROR);
-        }
+        restResult.setDesc(e.getMessage());
         return restResult;
     }
 
@@ -45,11 +41,7 @@ public class GlobalExceptionHandler {
         restResult.setCode(MvcHttpConstant.STATUS_CODE_INTERNAL_ERROR);
         restResult.setSuccess(false);
         restResult.setData(null);
-        if (e instanceof BusinessException) {
-            restResult.setDesc(e.getMessage());
-        } else {
-            restResult.setDesc(MvcHttpConstant.INTERNAL_DESC_ERROR);
-        }
+        restResult.setDesc(MvcHttpConstant.INTERNAL_DESC_ERROR);
         return restResult;
     }
 }
