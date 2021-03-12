@@ -4,9 +4,8 @@ import com.wesoon.web.exception.BusinessException;
 import com.wesoon.web.mvc.MvcHttpConstant;
 import com.wesoon.web.mvc.RestResult;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,11 +16,10 @@ import javax.servlet.http.HttpServletRequest;
  * @Version 1.0
  */
 @Slf4j
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
 
-    @ResponseBody
     @ExceptionHandler(BusinessException.class)
     public RestResult BusinessExceptionHandler(HttpServletRequest request, BusinessException e) {
         log.error(e.getMessage(), e);
@@ -33,7 +31,6 @@ public class GlobalExceptionHandler {
         return restResult;
     }
 
-    @ResponseBody
     @ExceptionHandler(Exception.class)
     public RestResult globalExceptionHandler(HttpServletRequest request, Exception e) {
         log.error(e.getMessage(), e);

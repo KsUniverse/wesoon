@@ -18,13 +18,19 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @Data 2018/10/14
  * @Version 1.0
  */
-
 @ControllerAdvice
 public class RestReturnValueHandler implements ResponseBodyAdvice {
 
+    private String controllerBasePackages;
+
+    public RestReturnValueHandler(String controllerBasePackages) {
+        this.controllerBasePackages = controllerBasePackages;
+    }
+
     @Override
     public boolean supports(MethodParameter methodParameter, Class aClass) {
-        return methodParameter.getDeclaringClass().isAnnotationPresent(RestController.class) || methodParameter.getMethod().isAnnotationPresent(ResponseBody.class);
+        return  methodParameter.getDeclaringClass().getName().startsWith(controllerBasePackages) &&
+                (methodParameter.getDeclaringClass().isAnnotationPresent(RestController.class) || methodParameter.getMethod().isAnnotationPresent(ResponseBody.class));
     }
 
     @Override

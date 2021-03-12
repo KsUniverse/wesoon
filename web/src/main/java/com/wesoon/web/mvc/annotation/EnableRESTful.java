@@ -13,8 +13,9 @@ import java.lang.annotation.*;
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Import({InitializationConfig.class, RestReturnValueHandler.class, HttpResponseMaxLongConfig.class, WebConfig.class, SwaggerConfig.class})
+@Import({RestReturnValueHandlerRegister.class, GlobalExceptionHandler.class, HttpResponseMaxLongConfig.class, WebConfig.class, SwaggerConfig.class})
 @Documented
 public @interface EnableRESTful {
 
+    String controllerBasePackage() default "";
 }
