@@ -1,18 +1,16 @@
 package com.wesoon.web.mvc.config;
 
-import com.alibaba.fastjson.JSONObject;
 import com.wesoon.web.mvc.MvcHttpConstant;
 import com.wesoon.web.mvc.RestResult;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
+import org.springframework.http.server.ServerHttpRequest;
+import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
-import org.springframework.web.method.support.ModelAndViewContainer;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Description
@@ -21,30 +19,26 @@ import javax.servlet.http.HttpServletResponse;
  * @Version 1.0
  */
 
-@Component
-public class RestReturnValueHandler implements HandlerMethodReturnValueHandler {
+@ControllerAdvice
+public class RestReturnValueHandler implements ResponseBodyAdvice {
 
     @Override
-    public boolean supportsReturnType(MethodParameter returnType) {
-        return returnType.hasMethodAnnotation(ResponseBody.class)
-                || returnType.getMethod().getDeclaringClass().isAnnotationPresent(RestController.class);
+    public boolean supports(MethodParameter methodParameter, Class aClass) {
+        return methodParameter.getMethod().isAnnotationPresent(ResponseBody.class)
+                || methodParameter.getDeclaringClass().isAnnotationPresent(RestController.class);
     }
 
     @Override
-    public void handleReturnValue(Object returnValue, MethodParameter returnType, ModelAndViewContainer mavContainer,
-            NativeWebRequest webRequest) throws Exception {
-        mavContainer.setRequestHandled(true);
-
-        HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);
-        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+    public Object beforeBodyWrite(Object body, MethodParameter methodParameter, MediaType mediaType,
+                                  Class aClass, ServerHttpRequest serverHttpRequest,
+                                  ServerHttpResponse serverHttpResponse) {
         RestResult restResult = new RestResult();
         restResult.setCode(MvcHttpConstant.STATUS_CODE_SUCCEEDED);
         restResult.setSuccess(true);
-        restResult.setData(returnValue);
+        restResult.setData(body);
         restResult.setDesc(MvcHttpConstant.DESC_SUCCESS);
-        response.getWriter().write(JSONObject.toJSONString(restResult));
+        return restResult;
     }
-
 }
 
 

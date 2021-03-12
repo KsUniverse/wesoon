@@ -30,6 +30,7 @@
         <mybatis.plus.version>3.4.2</mybatis.plus.version>
         <fastjson.version>1.2.47</fastjson.version>
         <lombok.version>1.18.4</lombok.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <dependencyManagement>
@@ -46,6 +47,16 @@
                 <artifactId>mybatis-plus</artifactId>
                 <version>${mybatis.plus.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
