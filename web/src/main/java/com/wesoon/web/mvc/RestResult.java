@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class RestResult {
 
-    private boolean isSuccess;
+    private boolean success;
     private int code;
     private Object data;
     private String desc;
