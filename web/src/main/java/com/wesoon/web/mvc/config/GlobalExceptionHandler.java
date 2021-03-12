@@ -1,4 +1,4 @@
-package com.wesoon.web.mvc.handler;
+package com.wesoon.web.mvc.config;
 
 import com.wesoon.web.exception.BusinessException;
 import com.wesoon.web.mvc.MvcHttpConstant;

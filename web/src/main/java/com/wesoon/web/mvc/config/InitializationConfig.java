@@ -1,6 +1,8 @@
 package com.wesoon.web.mvc.config;
 
-import com.wesoon.web.mvc.handler.RestReturnValueHandler;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
@@ -37,5 +39,12 @@ public class InitializationConfig {
         }
         // 重新设置参数解析优先级
         adapter.setReturnValueHandlers(argumentResolvers);
+    }
+
+    @Bean
+    public MybatisPlusInterceptor paginationInterceptor() {
+        MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
+        mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor());
+        return mybatisPlusInterceptor;
     }
 }

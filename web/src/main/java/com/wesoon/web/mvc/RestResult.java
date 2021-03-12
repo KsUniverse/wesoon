@@ -13,6 +13,6 @@ public class RestResult {
 
     private boolean isSuccess;
     private int code;
-    private String data;
+    private Object data;
     private String desc;
 }

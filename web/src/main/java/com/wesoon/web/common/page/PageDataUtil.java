@@ -24,7 +24,7 @@ public class PageDataUtil {
     }
 
     public static <T extends PageParam> Page buildPage(T pageParam) {
-        Page page = new Page();
+        Page page = new Page<>();
         page.setCurrent(pageParam.getPage());
         page.setSize(pageParam.getSize());
         return page;

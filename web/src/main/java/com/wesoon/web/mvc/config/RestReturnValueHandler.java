@@ -1,4 +1,4 @@
-package com.wesoon.web.mvc.handler;
+package com.wesoon.web.mvc.config;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wesoon.web.mvc.MvcHttpConstant;
@@ -40,7 +40,7 @@ public class RestReturnValueHandler implements HandlerMethodReturnValueHandler {
         RestResult restResult = new RestResult();
         restResult.setCode(MvcHttpConstant.STATUS_CODE_SUCCEEDED);
         restResult.setSuccess(true);
-        restResult.setData(JSONObject.toJSONString(returnValue));
+        restResult.setData(returnValue);
         restResult.setDesc(MvcHttpConstant.DESC_SUCCESS);
         response.getWriter().write(JSONObject.toJSONString(restResult));
     }
