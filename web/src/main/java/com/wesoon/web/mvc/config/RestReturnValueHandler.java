@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 
@@ -22,7 +24,7 @@ public class RestReturnValueHandler implements ResponseBodyAdvice {
 
     @Override
     public boolean supports(MethodParameter methodParameter, Class aClass) {
-        return RestResult.class != methodParameter.getMethod().getReturnType();
+        return methodParameter.getDeclaringClass().isAnnotationPresent(RestController.class) || methodParameter.getMethod().isAnnotationPresent(ResponseBody.class);
     }
 
     @Override
