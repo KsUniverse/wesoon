@@ -24,8 +24,7 @@ public class RestReturnValueHandler implements ResponseBodyAdvice {
 
     @Override
     public boolean supports(MethodParameter methodParameter, Class aClass) {
-        return methodParameter.getMethod().isAnnotationPresent(ResponseBody.class)
-                || methodParameter.getDeclaringClass().isAnnotationPresent(RestController.class);
+        return RestResult.class == methodParameter.getMethod().getReturnType();
     }
 
     @Override
