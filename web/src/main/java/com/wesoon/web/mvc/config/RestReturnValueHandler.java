@@ -2,6 +2,7 @@ package com.wesoon.web.mvc.config;
 
 import com.wesoon.web.mvc.MvcHttpConstant;
 import com.wesoon.web.mvc.RestResult;
+import com.wesoon.web.mvc.annotation.other.OnRestReturn;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
@@ -19,7 +20,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @Version 1.0
  */
 @ControllerAdvice
-public class RestReturnValueHandler implements ResponseBodyAdvice {
+public class RestReturnValueHandler implements ResponseBodyAdvice<Object> {
 
     private String controllerBasePackages;
 
@@ -29,8 +30,14 @@ public class RestReturnValueHandler implements ResponseBodyAdvice {
 
     @Override
     public boolean supports(MethodParameter methodParameter, Class aClass) {
-        return  methodParameter.getDeclaringClass().getName().startsWith(controllerBasePackages) &&
-                (methodParameter.getDeclaringClass().isAnnotationPresent(RestController.class) || methodParameter.getMethod().isAnnotationPresent(ResponseBody.class));
+        if(methodParameter.getMethod().isAnnotationPresent(OnRestReturn.class)) {
+            return true;
+        }
+        if(methodParameter.getDeclaringClass().getName().startsWith(controllerBasePackages)) {
+            return methodParameter.getDeclaringClass().isAnnotationPresent(RestController.class)
+                    || methodParameter.getMethod().isAnnotationPresent(ResponseBody.class);
+        }
+        return false;
     }
 
     @Override

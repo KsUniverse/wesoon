@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 public class PageParam {
 
     @NotNull(message = "分页参数不能为空")
-    private Long page;
+    private Long page = 1L;
 
     @NotNull(message = "分页参数不能为空")
-    private Long size;
+    private Long size = 15L;
 }

@@ -11,5 +11,15 @@
 
     <artifactId>wechat</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.wesoon</groupId>
+            <artifactId>web</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+    </dependencies>
 </project>
